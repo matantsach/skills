@@ -1,0 +1,12 @@
+{
+  "name": "eng-workflows",
+  "description": "Self-learning comms-triage and reporting skills over Outlook, Teams, GitHub, Azure DevOps, and Azure. Cuts email/Teams overload and learns your priorities via a local, version-controlled LLM-Wiki memory. For software engineers and engineering managers.",
+  "version": "0.3.0",
+  "author": {
+    "name": "Your Name",
+    "email": "you@example.com"
+  },
+  "homepage": "https://github.com/your-org/eng-workflows",
+  "repository": "https://github.com/your-org/eng-workflows",
+  "license": "MIT"
+}

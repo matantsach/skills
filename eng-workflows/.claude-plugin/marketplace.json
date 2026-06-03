@@ -1,0 +1,18 @@
+{
+  "name": "eng-workflows",
+  "description": "Self-learning skills that cut email/Teams overload and automate engineering reporting, for software engineers and engineering managers.",
+  "owner": {
+    "name": "Your Name",
+    "email": "you@example.com"
+  },
+  "plugins": [
+    {
+      "name": "eng-workflows",
+      "source": "./",
+      "description": "Self-learning comms-triage and reporting skills over Outlook, Teams, GitHub, Azure DevOps, and Azure. Cuts email/Teams overload and learns your priorities via a local LLM-Wiki memory.",
+      "version": "0.3.0",
+      "category": "productivity",
+      "tags": ["inbox-triage", "communication-overload", "teams", "outlook", "engineering-management", "memory", "workflows"]
+    }
+  ]
+}
