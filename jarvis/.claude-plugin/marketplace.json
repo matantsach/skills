@@ -1,0 +1,18 @@
+{
+  "name": "jarvis",
+  "description": "Jarvis: a personal chief of staff that cuts communication overload for engineers and engineering managers, and learns who and what matters to you.",
+  "owner": {
+    "name": "matantsach",
+    "url": "https://github.com/matantsach/jarvis"
+  },
+  "plugins": [
+    {
+      "name": "jarvis",
+      "source": "./",
+      "description": "One main skill (jarvis) that triages Outlook + Teams into a ranked brief of what needs you and drafts in your voice, plus an auxiliary curator (jarvis-tune) that keeps its learned memory accurate. Runs interactively and unattended as a scheduled Workflow. Draft-only by default.",
+      "version": "0.4.0",
+      "category": "productivity",
+      "tags": ["inbox-triage", "communication-overload", "teams", "outlook", "engineering-management", "memory", "assistant"]
+    }
+  ]
+}
