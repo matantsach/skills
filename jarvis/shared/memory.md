@@ -138,6 +138,12 @@ Every learned claim is **provenance-first**: it cites evidence from `log.md` and
 - may_post_to_teams_channels: false
 - may_create_work_items: false         # if true → create with label "needs-review"
 - memory_writes: propose-only          # propose-only | apply-safe | apply-all  (jarvis-tune)
+
+## delivery   (used by weekly-delivery-report)
+- team: <name>
+- github: { org: "<org>", repos: ["<owner/repo>", ...] }
+- azure_devops: { project: "<project>", team: "<team>", iteration: "current" }   # org = ado_org plugin config
+- distribution_list: "team-stakeholders@contoso.com"
 ```
 
 ### `wiki/people.md`
@@ -186,8 +192,9 @@ Every learned claim is **provenance-first**: it cites evidence from `log.md` and
 
 ### `cursors.md`
 ```markdown
-- jarvis:      2026-06-02T08:00Z
-- jarvis-tune: 2026-05-26T07:30Z
+- jarvis:                 2026-06-02T08:00Z
+- jarvis-tune:            2026-05-26T07:30Z
+- weekly-delivery-report: 2026-05-30T16:00Z
 ```
 
 ---

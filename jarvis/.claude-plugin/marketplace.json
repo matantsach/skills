@@ -9,10 +9,10 @@
     {
       "name": "jarvis",
       "source": "./",
-      "description": "One main skill (jarvis) that triages Outlook + Teams into a ranked brief of what needs you and drafts in your voice, plus an auxiliary curator (jarvis-tune) that keeps its learned memory accurate. Runs interactively and unattended as a scheduled Workflow. Draft-only by default.",
-      "version": "0.4.0",
+      "description": "One main skill (jarvis) that triages Outlook + Teams into a ranked brief of what needs you and drafts in your voice, plus auxiliary skills: jarvis-tune (keeps its learned memory accurate) and weekly-delivery-report (drafts your stakeholder update from GitHub + Azure DevOps). Bundles the official Azure DevOps MCP server. Runs interactively and unattended as a scheduled Workflow. Draft-only by default.",
+      "version": "0.5.0",
       "category": "productivity",
-      "tags": ["inbox-triage", "communication-overload", "teams", "outlook", "engineering-management", "memory", "assistant"]
+      "tags": ["inbox-triage", "communication-overload", "teams", "outlook", "azure-devops", "engineering-management", "memory", "assistant"]
     }
   ]
 }

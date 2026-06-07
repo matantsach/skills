@@ -1,12 +1,20 @@
 {
   "name": "jarvis",
-  "description": "A personal chief of staff for work communications. Jarvis triages Outlook and Microsoft Teams into one ranked brief of what needs you, drafts replies in your voice, and learns your priorities over time in a local, private, version-controlled memory. Read-only and draft-only by default.",
-  "version": "0.4.0",
+  "description": "A personal chief of staff for work communications. Jarvis triages Outlook and Microsoft Teams into one ranked brief of what needs you, drafts replies in your voice, drafts your weekly delivery update, and learns your priorities over time in a local, private, version-controlled memory. Read-only and draft-only by default.",
+  "version": "0.5.0",
   "author": {
     "name": "matantsach",
     "url": "https://github.com/matantsach/jarvis"
   },
   "homepage": "https://github.com/matantsach/jarvis",
   "repository": "https://github.com/matantsach/jarvis",
-  "license": "MIT"
+  "license": "MIT",
+  "userConfig": {
+    "ado_org": {
+      "type": "string",
+      "title": "Azure DevOps organization",
+      "description": "Your Azure DevOps org name — the <org> in https://dev.azure.com/<org>. Powers work-item creation and the weekly-delivery-report skill via the bundled Azure DevOps MCP server (it signs in with your Azure CLI session — run `az login` once). If you don't use Azure DevOps, leave this blank and decline the 'ado' server when prompted.",
+      "required": false
+    }
+  }
 }

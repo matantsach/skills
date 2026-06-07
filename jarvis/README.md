@@ -2,8 +2,8 @@
 
 A **personal chief of staff** for software engineers and engineering managers, packaged as a
 **Claude Code plugin**. It sits on the MCP connectors you already have — **Outlook, Microsoft
-Teams** (plus GitHub, Azure DevOps, Azure for roadmap skills) — and attacks the thing that
-hurts most: **communication overload**.
+Teams, GitHub** — **bundles** the official **Azure DevOps** MCP server, and attacks the things
+that hurt most: **communication overload** and **status reporting**.
 
 Jarvis turns an overwhelming inbox + Teams into **one ranked brief of what needs you** —
 bottleneck-first, in your voice — drafts the replies, and gets sharper every run by grooming a
@@ -25,10 +25,13 @@ each person. Jarvis runs **interactively** (chat) and **unattended** as schedule
 |------|------|--------------|
 | **`jarvis`** | ⭐ main | One ranked brief of what needs you across Outlook + Teams, in your voice. Collapses noisy threads, drafts replies, suggests one action per item, and learns from what you do. Read-only / draft-only. |
 | **`jarvis-tune`** | auxiliary | The memory **curator**: distills what you ignore vs. act on into provenance-backed rules and lints them for contradictions/staleness, so `jarvis` stays accurate and noise drops over time. |
-| `weekly-delivery-report`, `alert-triage`, … | 🛣️ roadmap | reporting + incident workflows over GitHub / ADO / Azure |
+| **`weekly-delivery-report`** | auxiliary | Drafts your **stakeholder update** from real activity: merged PRs + CI (GitHub), completed-vs-planned + burndown (Azure DevOps), incidents (Azure). Draft-only. |
+| `alert-triage`, … | 🛣️ roadmap | incident + on-call workflows |
 
-You talk to **`jarvis`**. `jarvis-tune` is the weekly tune-up that keeps it honest — invoke it
-when triage gets noisy ("reduce the noise", "you keep showing me X") or run it on a schedule.
+You talk to **`jarvis`**. The auxiliaries keep it honest and extend it: `jarvis-tune` is the
+tune-up when triage gets noisy ("reduce the noise", "you keep showing me X"), and
+`weekly-delivery-report` turns your week's work into a status update — both invoked naturally
+or on a schedule.
 
 ## The memory model — a curated wiki
 
@@ -57,8 +60,19 @@ Then just ask: *"triage my Teams and Outlook — what needs me?"* (first run see
 ~2 min). Skills are namespaced, e.g. `/jarvis:jarvis` and `/jarvis:jarvis-tune`. Choose **user**
 scope (all your projects), **project** scope (shared with collaborators), or **local**.
 
-Other marketplace sources also work: a git URL (`…/jarvis.git#v0.4.0`) or a local path
+Other marketplace sources also work: a git URL (`…/jarvis.git#v0.5.0`) or a local path
 (`/plugin marketplace add ./jarvis`).
+
+### Azure DevOps (bundled, optional)
+
+Jarvis bundles Microsoft's **official Azure DevOps MCP server** (`@azure-devops/mcp`) so
+work-item creation and `weekly-delivery-report` work out of the box. On enable, Claude Code
+prompts for your **`ado_org`** (the `<org>` in `dev.azure.com/<org>`) and asks you to approve
+the `ado` server. It authenticates with your **Azure CLI** session — run `az login` once; no
+token is stored. The server is scoped to the `core`, `work-items`, `repositories`, and
+`pipelines` tool domains. **Don't use Azure DevOps?** Leave `ado_org` blank and decline the
+`ado` server at the approval prompt — everything else works without it. (For CI/unattended
+hosts, switch `--authentication azcli` to `pat`/`envvar` in `.mcp.json`.)
 
 ## Roll it out to your whole team
 
@@ -92,10 +106,10 @@ claude --plugin-dir ./jarvis     # load locally without installing (also accepts
 claude plugin validate ./jarvis  # validate before sharing
 /reload-plugins                  # pick up edits in-session
 ```
-- **Connectors**: the illustrative `mcp__outlook__*` / `mcp__teams__*` in each skill's
-  `allowed-tools` are placeholders — rename them to your installed servers. A plugin *can*
-  also bundle MCP servers via a root `.mcp.json` (like the official `github`/`slack` plugins),
-  but your Microsoft connectors are likely company-provided.
+- **Connectors**: Azure DevOps is **bundled** via the root [`.mcp.json`](.mcp.json) (`mcp__ado__*`).
+  The `mcp__outlook__*` / `mcp__teams__*` names in each skill's `allowed-tools` are
+  placeholders — rename them to your installed servers (Microsoft connectors are usually
+  company-provided); `mcp__github__*` assumes the standard GitHub MCP server.
 - **Adapt = data, not code.** Personalization is each person's `~/.jarvis/` wiki; you rarely
   touch a `SKILL.md`.
 - **Self-contained.** Plugins are copied to a cache on install, so skills only reference files

@@ -21,7 +21,7 @@ allowed-tools:
   - mcp__outlook__create_inbox_rule
   - mcp__teams__send_chat_message       # deliver the proposal summary to your self-chat
 metadata:
-  version: 0.4.0
+  version: 0.5.0
 ---
 
 # Jarvis — Tune (memory curator)

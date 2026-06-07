@@ -25,10 +25,10 @@ allowed-tools:
   - mcp__teams__list_channel_messages
   - mcp__teams__send_chat_message       # ONLY to deliver the brief to your own self-chat
   # Optional: turn an item into a tracked task (only if profile.automation allows)
-  - mcp__azure-devops__create_work_item
+  - mcp__ado__wit_create_work_item     # bundled Azure DevOps server (set ado_org in plugin config)
   - mcp__github__issue_write
 metadata:
-  version: 0.4.0
+  version: 0.5.0
 ---
 
 # Jarvis
@@ -123,6 +123,8 @@ brief and exit cleanly: a green run means "no error", not "it worked". Full cont
 
 ## Adapt to your setup
 The `mcp__outlook__*` / `mcp__teams__*` names in `allowed-tools` are illustrative — rename
-them to your installed connectors. In a Workflow that list is your real safety boundary (the
-platform won't prompt). Tune priorities and the `automation` policy in `profile.md`:
-personalization is **data, not code**; you rarely touch this file.
+them to your installed connectors. (Azure DevOps is the exception: the `mcp__ado__*` server is
+**bundled** with the plugin — just set your `ado_org` in the plugin config; see the README.)
+In a Workflow that `allowed-tools` list is your real safety boundary (the platform won't
+prompt). Tune priorities and the `automation` policy in `profile.md`: personalization is
+**data, not code**; you rarely touch this file.
